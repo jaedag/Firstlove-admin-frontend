@@ -1,6 +1,11 @@
 import React from 'react'
+import {useQuery} from '@apollo/client'
+import {jobs} from '../queries/membersData'
 
 export const SideBar = () => {
+
+  const { data: work, error: workError, loading: workLoading} = useQuery(jobs)
+  console.log(work)
     return (
         
         <nav id="sidebarMenu" className="d-md-block bg-gray sidebar collapse">
@@ -59,8 +64,13 @@ export const SideBar = () => {
                 </div>
               <div className="py-1">
               <select className="form-control">
-                <option>Profession</option>
-                <option>Doctor</option>
+                { work ? 
+                  work.Occupation.map( (job, index) => {
+                    return(
+                      <option key={index}>{job.occupation}</option>
+                    )
+                  }): <option>Loading</option>
+                }                
               </select>
               </div>
             </div>
