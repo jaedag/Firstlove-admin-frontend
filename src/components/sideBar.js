@@ -5,7 +5,7 @@ import {jobs} from '../queries/membersData'
 export const SideBar = () => {
 
   const { data: work, error: workError, loading: workLoading} = useQuery(jobs)
-  console.log(work)
+  
     return (
         
         <nav id="sidebarMenu" className="d-md-block bg-gray sidebar collapse">
