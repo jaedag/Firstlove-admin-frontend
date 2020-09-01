@@ -218,3 +218,16 @@ p{
         margin-bottom: 1rem;
     }
 }
+
+.custom-select{
+    background-color: #181818;
+    color: #BABABA;
+    border: 0rem;
+    border-color: #383838;
+    border-radius: .40rem;
+}
+
+.border {
+    border: 1px solid #707070!important;
+}
+

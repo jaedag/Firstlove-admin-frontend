@@ -8,6 +8,7 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 // import { Signin } from "./pages/Signin";
 import  Dashboard  from "./pages/Dashboard";
 import { Member } from "./pages/Member";
+import { AddMember } from "./pages/AddMember";
 
 
 const client = new ApolloClient({
@@ -21,6 +22,7 @@ const PastorsAdmin = () => {
       <Switch>
         <Route path='/' component={Dashboard} exact />
         <Route path='/member' component={Member} exact />
+        <Route path='/member/addMember' component={AddMember} exact />
       </Switch>
     </Router>
   )

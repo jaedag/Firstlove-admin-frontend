@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
+import {Link} from 'react-router-dom'
 import {useQuery} from '@apollo/client'
 import {All_Members} from '../queries/membersData'
 
@@ -6,7 +7,7 @@ export const MemberTable = () => {
 
   const { data: member, error: memberError, loading: memberLoading} = useQuery(All_Members)
           
-      if (memberLoading){          
+      if (memberLoading || memberError){          
             return(
               <div className="container col-lg-9 col-md-9">
               <div className="row row-no-gutters">
@@ -45,7 +46,24 @@ export const MemberTable = () => {
       )
     })
     return(
-      <div className="container col-lg-9 col-md-12">        
+          <div className="container col-lg-9 col-md-12"> 
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h3 class="h3">Search Results</h3>
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+          <div className="file-field btn btn-sm btn-primary">
+          {/*<span>Import CSV</span>*/}
+          <input type='file'/>
+          </div>
+          
+        </div>
+        <Link to='/member/addMember' type="button" className="btn btn-sm btn-primary" >
+          
+          Add Member
+        </Link>        
+      </div>
+    </div>
+
             <div className="row row-no-gutters">
             {member.Member.map((soul) => {
               return(
@@ -64,6 +82,7 @@ export const MemberTable = () => {
         })}
         </div>
         </div>  
+        
     )  
        
    
