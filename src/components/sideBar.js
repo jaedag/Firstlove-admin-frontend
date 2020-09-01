@@ -30,7 +30,7 @@ export const SideBar = () => {
                 <label className="form-check-label" htmlFor="inlineRadio2">Female</label>
               </div>
             </div>
-            <legend className="col-form-label">Marital Status</legend> 
+            <label className="col-form-label">Marital Status</label> 
             <div>
               <div className="form-check form-check-inline">
                 <input className="form-check-input" type="radio" name="Marital" id="inlineRadio1" value="option1"/>
@@ -41,13 +41,16 @@ export const SideBar = () => {
                 <label className="form-check-label" htmlFor="inlineRadio2">Married</label>
               </div>
             </div>
-            <div className="mt-3 bg-gray">
-              <div className="py-1">
+            
+            <div className="mt-2 bg-gray">
+              {/** 
+            <div className="py-1">
               <select className="form-control">
                 <option>Age Bracket</option>
                 <option>10-20</option>
               </select>
               </div>
+
               <div className="py-1 form-row">
                 <div className="col-md-4">
                 <select className="form-control">
@@ -62,8 +65,10 @@ export const SideBar = () => {
                 </select>
               </div>
                 </div>
-              <div className="py-1">
-              <select className="form-control">
+            */}
+              
+              <div className="form-control form-row col-md-9 mb-3 p-2 ">
+              <select className="custom-select border">
                 { work ? 
                   work.Occupation.map( (job, index) => {
                     return(
@@ -75,7 +80,7 @@ export const SideBar = () => {
               </div>
             </div>
 
-            <div className="mt-3">
+          {/*  <div className="mt-3">
               <h3>
                 Other Info
               </h3>
@@ -97,7 +102,7 @@ export const SideBar = () => {
                     <option>2013</option>
               </select>
               </div>
-            </div>
+              </div>*/}
           </div>
           </li>
           </ul>
