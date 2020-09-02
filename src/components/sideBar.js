@@ -69,6 +69,7 @@ export const SideBar = () => {
               
               <div className="form-control form-row col-md-9 mb-3 p-2 ">
               <select className="custom-select border">
+              <option defaultValue>Profession</option>
                 { work ? 
                   work.Occupation.map( (job, index) => {
                     return(
