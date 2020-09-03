@@ -14,14 +14,6 @@ export const All_Members = gql `{
     email
     phoneNumber
     whatsAppNumber
-    _id
-    dob{date {
-      year
-      month
-      day
-      formatted
-    }
-    }
     ministry{name}
     occupation{occupation}
     bacenta{name}
@@ -29,4 +21,16 @@ export const All_Members = gql `{
     maritalStatus{status}
   }
 
-  }`
+  }`;
+
+
+export const SEARCH = gql `
+  query memberSearch ($searchKey: String!){
+  fuzzyMemberByName(searchKey: $searchKey){
+    firstName
+    lastName
+    email
+    phoneNumber
+  }
+}
+`

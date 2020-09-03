@@ -9,7 +9,7 @@ export const AddMemberDetails = () => {
   const { data: work, error: workError, loading: workLoading} = useQuery(jobs)
   const [addMember, {data}] = useMutation(NEW_MEMBER)
 
-  const [member, setMember] = useState({
+  const initialData = {
     firstName: '',
     lastName: '',
     email: '',
@@ -22,7 +22,9 @@ export const AddMemberDetails = () => {
     church: '',
     ministry: ''
 
-  })
+  }
+
+  const [member, setMember] = useState(initialData)
 
   const handleInput = (event) => {
     const target = event.target

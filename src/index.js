@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import registerServiceWorker from "./registerServiceWorker";
@@ -9,6 +9,7 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import  Dashboard  from "./pages/Dashboard";
 import { Member } from "./pages/Member";
 import { AddMember } from "./pages/AddMember";
+import { memberContext } from "./context/MemberContext";
 
 
 const client = new ApolloClient({
@@ -17,13 +18,20 @@ const client = new ApolloClient({
 });
 
 const PastorsAdmin = () => {
+
+  const [memberData, setMemberData] = useState({
+    filtered: [],
+    searchKey: ''
+  })
   return(
     <Router>
+    <memberContext.Provider value={{memberData, setMemberData}}>
       <Switch>
         <Route path='/' component={Dashboard} exact />
         <Route path='/member' component={Member} exact />
         <Route path='/member/addMember' component={AddMember} exact />
       </Switch>
+      </memberContext.Provider>
     </Router>
   )
 }

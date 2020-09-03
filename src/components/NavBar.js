@@ -1,7 +1,22 @@
-import React from 'react'
+import React, {useState, useContext} from 'react'
 import {Link} from 'react-router-dom'
+import { memberContext } from '../context/MemberContext'
 
 export const NavBar = () => {
+
+  const searchData = useContext(memberContext)
+
+  const handleInput = (e) => {
+    
+    searchData.setMemberData({
+      ...searchData.memberData,
+      searchKey: e.target.value
+    })
+    // console.log(searchData.memberData.searchKey)
+  }
+
+  
+
     return (
         <div>
         <nav className="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow border border-gray">
@@ -40,7 +55,7 @@ export const NavBar = () => {
            <ul className="navbar-nav"> 
              <li className="nav-item d-none  d-md-block ">  
             <div className="input-group">
-            <input className="form-control form-control-dark w-50 border border-gray" type="text" placeholder="Search" aria-label="Search-big"/>
+            <input onChange={handleInput} className="form-control form-control-dark w-50 border border-gray" type="text" placeholder="Search" aria-label="Search-big"/>
             <span className="input-group-append"> 
               <button className="btn btn-primary border border-gray" type="button">
                 <i className="fas fa-search"></i>
@@ -63,7 +78,7 @@ export const NavBar = () => {
         <ul className="navbar-nav d-none d-block d-sm-block d-md-none pb-2"> 
           <li className="nav-item ">  
         <div className="input-group form-control-dark">
-        <input className="form-control w-75 border border-gray" type="text" placeholder="Search" aria-label="Search-small"/>
+        <input onChange={handleInput} className="form-control w-75 border border-gray" type="text" placeholder="Search" aria-label="Search-small"/>
         <span className="input-group-append"> 
           <button className="btn btn-primary border border-gray" type="button">
             <i className="fas fa-search"></i>
