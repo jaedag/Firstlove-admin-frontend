@@ -1,18 +1,19 @@
-import {gql} from '@apollo/client';
+import { gql } from "@apollo/client";
 
-export const members = gql`{
-       memberCount
-}	
-`
+export const members = gql`
+  {
+    memberCount
+  }
+`;
 
 export const communityCount = gql`
-	
-  { communityCount}
-    
+  {
+    communityCount
+  }
 `;
 
 export const sontaCount = gql`
-	
- {   sontaCount}
-    
+  {
+    sontaCount
+  }
 `;

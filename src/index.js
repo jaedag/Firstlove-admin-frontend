@@ -1,44 +1,56 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import registerServiceWorker from "./registerServiceWorker";
-import {Route, Switch, BrowserRouter as Router} from 'react-router-dom'
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 // import ApolloClient from "apollo-boost";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
-// import { Signin } from "./pages/Signin";
-import  Dashboard  from "./pages/Dashboard";
-import { Member } from "./pages/Member";
+// import {Login} from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import { Members } from "./pages/Members";
+import { DisplayMemberDetails } from "./pages/DisplayMemberDetails";
 import { AddMember } from "./pages/AddMember";
+import { AddCentre } from "./pages/AddCentre";
+import { DisplayCentreDetails } from "./pages/DisplayCentreDetails";
 import { memberContext } from "./context/MemberContext";
 
-
 const client = new ApolloClient({
-  uri: process.env.REACT_APP_GRAPHQL_URI || '/graphql',
-  cache: new InMemoryCache(),
+  uri: process.env.REACT_APP_GRAPHQL_URI || "/graphql",
+  cache: new InMemoryCache()
 });
 
 const PastorsAdmin = () => {
-
   const [memberData, setMemberData] = useState({
     filtered: [],
-    searchKey: ''
-  })
-  return(
+    searchKey: ""
+  });
+
+  return (
     <Router>
-    <memberContext.Provider value={{memberData, setMemberData}}>
-      <Switch>
-        <Route path='/' component={Dashboard} exact />
-        <Route path='/member' component={Member} exact />
-        <Route path='/member/addMember' component={AddMember} exact />
-      </Switch>
+      <memberContext.Provider value={{ memberData, setMemberData }}>
+        <Switch>
+          <Route path="/" component={Dashboard} exact />
+          <Route path="/members" component={Members} exact />
+          <Route path="/members/addmember" component={AddMember} exact />
+          <Route
+            path="/members/displaymember"
+            component={DisplayMemberDetails}
+            exact
+          />
+          <Route path="/centre/addcentre" component={AddCentre} exact />
+          <Route
+            path="/centre/displaycentredetails"
+            component={DisplayCentreDetails}
+            exact
+          />
+        </Switch>
       </memberContext.Provider>
     </Router>
-  )
-}
+  );
+};
 
 const Main = () => (
   <ApolloProvider client={client}>
-    <PastorsAdmin/>    
+    <PastorsAdmin />
   </ApolloProvider>
 );
 
